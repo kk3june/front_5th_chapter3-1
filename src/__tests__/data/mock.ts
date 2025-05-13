@@ -16,7 +16,7 @@ const mockEvents: Event[] = [
   {
     id: '09702fb3-a478-40b3-905e-9ab3c8849dcd',
     title: '점심 약속',
-    date: '2025-05-21',
+    date: '2025-05-20',
     startTime: '12:30',
     endTime: '13:30',
     description: '동료와 점심 식사',
