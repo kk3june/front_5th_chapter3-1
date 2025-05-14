@@ -86,9 +86,18 @@ export function formatMonth(date: Date): string {
 
 /**
  * 주어진 날짜가 특정 범위 내에 있는지 확인합니다.
+ * UTC 기준으로 변환되는 과정에서의 버그를 예방하기 위해 시간을 제외한 날짜만으로 비교합니다.
  */
 export function isDateInRange(date: Date, rangeStart: Date, rangeEnd: Date): boolean {
-  return date >= rangeStart && date <= rangeEnd;
+  const compareDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  const compareStart = new Date(
+    rangeStart.getFullYear(),
+    rangeStart.getMonth(),
+    rangeStart.getDate()
+  );
+  const compareEnd = new Date(rangeEnd.getFullYear(), rangeEnd.getMonth(), rangeEnd.getDate());
+
+  return compareDate >= compareStart && compareDate <= compareEnd;
 }
 
 export function fillZero(value: number, size = 2) {
